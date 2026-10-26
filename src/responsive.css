@@ -1,0 +1,16 @@
+/* Global mobile safety — import LAST (after all components) */
+html, body { max-width: 100%; overflow-x: hidden; }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
+body { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+img, video { max-width: 100%; height: auto; }
+
+@media (max-width: 768px) {
+  .section-pad { padding-top: 64px; padding-bottom: 64px; }
+  .section-header { margin-bottom: 36px; }
+}
+@media (max-width: 480px) {
+  .section-pad { padding-top: 52px; padding-bottom: 52px; }
+  .section-header { margin-bottom: 28px; }
+}

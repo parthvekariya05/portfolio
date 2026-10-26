@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#06060A"/>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.4"/>
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" stroke="rgba(139,92,246,0.08)" stroke-width="1" fill="none"/>
+    </pattern>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A78BFA"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <circle cx="900" cy="120" r="200" fill="rgba(139,92,246,0.12)"/>
+  <circle cx="1050" cy="500" r="150" fill="rgba(34,211,238,0.08)"/>
+  <text x="80" y="180" font-family="Syne, sans-serif" font-size="28" font-weight="600" fill="#8B5CF6" letter-spacing="6">PORTFOLIO</text>
+  <text x="80" y="290" font-family="Syne, sans-serif" font-size="72" font-weight="800" fill="#F1F5F9">Parth Vekariya</text>
+  <text x="80" y="360" font-family="DM Sans, sans-serif" font-size="32" fill="#94A3B8">Full Stack Developer � React � ASP.NET Core � AI</text>
+  <rect x="80" y="420" width="280" height="56" rx="12" fill="url(#accent)"/>
+  <text x="220" y="456" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="22" font-weight="600" fill="white">parthvekariya05@gmail.com</text>
+</svg>

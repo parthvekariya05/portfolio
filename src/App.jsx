@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import './responsive.css'; // keep this LAST
 
 const SECTIONS = ['home', 'about', 'skills', 'projects', 'experience', 'contact'];
 

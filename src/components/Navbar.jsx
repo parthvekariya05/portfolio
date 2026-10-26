@@ -16,6 +16,13 @@ export default function Navbar({ activeSection }) {
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  // Close menu when screen grows to desktop
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth > 1000) setMenuOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);
@@ -26,7 +33,7 @@ export default function Navbar({ activeSection }) {
       {/* Progress bar */}
       <div className="nav-progress" style={{ transform: `scaleX(${progress})` }} />
 
-      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+      <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''} ${menuOpen ? 'navbar--open' : ''}`}>
         <div className="container navbar__inner">
           {/* Logo */}
           <button className="navbar__logo" onClick={() => scrollTo('home')}>
@@ -35,7 +42,7 @@ export default function Navbar({ activeSection }) {
           </button>
 
           {/* Desktop links */}
-          <ul className="navbar__links hide-mobile">
+          <ul className="navbar__links">
             {NAV_ITEMS.map(item => (
               <li key={item}>
                 <button
@@ -49,7 +56,7 @@ export default function Navbar({ activeSection }) {
           </ul>
 
           {/* CTA */}
-          <div className="navbar__actions hide-mobile">
+          <div className="navbar__actions">
             <a
               href={META.github}
               target="_blank"
@@ -71,6 +78,7 @@ export default function Navbar({ activeSection }) {
             className={`navbar__hamburger ${menuOpen ? 'open' : ''}`}
             onClick={() => setMenuOpen(m => !m)}
             aria-label="Toggle menu"
+            aria-expanded={menuOpen}
           >
             <span /><span /><span />
           </button>

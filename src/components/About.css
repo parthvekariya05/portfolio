@@ -2,7 +2,7 @@
 
 .about__grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: var(--s5);
   align-items: start;
   margin-bottom: var(--s6);
@@ -10,6 +10,7 @@
 
 .about__bio {
   display: flex; flex-direction: column; gap: var(--s3);
+  min-width: 0;
 }
 .about__bio p {
   font-size: 15px;
@@ -24,8 +25,9 @@
 /* Info cards grid */
 .about__cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
+  min-width: 0;
 }
 .about__card {
   display: flex;
@@ -34,6 +36,7 @@
   padding: 14px 16px;
   transition: all var(--t2) var(--ease);
   cursor: default;
+  min-width: 0;
 }
 .about__card:hover { transform: translateY(-2px); }
 .about__card-icon { font-size: 20px; flex-shrink: 0; }
@@ -46,18 +49,20 @@
   font-size: 13px; font-weight: 600;
   color: var(--text-1);
   margin-top: 2px;
+  overflow-wrap: anywhere;
 }
 
 /* What I do */
 .about__what-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--s2);
 }
 .about__what-card {
   padding: var(--s3);
   transition: all var(--t2) var(--ease);
   cursor: default;
+  min-width: 0;
 }
 .about__what-card:hover { transform: translateY(-4px); border-color: var(--border-hi); }
 .about__what-icon { font-size: 24px; margin-bottom: var(--s1); display: block; }
@@ -68,11 +73,22 @@
 }
 .about__what-desc { font-size: 13px; color: var(--text-3); line-height: 1.7; }
 
+@media (max-width: 1100px) {
+  .about__what-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 900px) {
-  .about__grid { grid-template-columns: 1fr; }
-  .about__what-grid { grid-template-columns: 1fr 1fr; }
+  .about__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-bottom: 48px; }
 }
 @media (max-width: 600px) {
-  .about__cards { grid-template-columns: 1fr; }
-  .about__what-grid { grid-template-columns: 1fr; }
+  .about__bio p { font-size: 14.5px; line-height: 1.8; }
+  .about__links .btn { flex: 1 1 auto; justify-content: center; }
+  .about__card { padding: 12px; gap: 10px; }
+  .about__what-grid { grid-template-columns: minmax(0, 1fr); }
+  .about__what-card { padding: 20px; }
+}
+@media (max-width: 380px) {
+  .about__cards { grid-template-columns: minmax(0, 1fr); }
+}
+@media (hover: none) {
+  .about__card:hover, .about__what-card:hover { transform: none; }
 }

@@ -1,6 +1,6 @@
 .contact__grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
   gap: var(--s5);
   align-items: start;
 }
@@ -34,12 +34,12 @@
 .contact__location-pin { font-size: 22px; }
 
 /* Form */
-.contact__form-wrap { padding: var(--s4); }
+.contact__form-wrap { padding: var(--s4); min-width: 0; }
 .contact__form { display: flex; flex-direction: column; gap: var(--s2); }
 
-.contact__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+.contact__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s2); }
 
-.contact__field { display: flex; flex-direction: column; gap: 6px; }
+.contact__field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .contact__label { font-size: 12px; font-weight: 500; color: var(--text-3); letter-spacing: 0.05em; }
 
 .contact__input {
@@ -48,10 +48,12 @@
   border-radius: var(--r2);
   padding: 12px 14px;
   color: var(--text-1);
-  font-family: var(--font-body); font-size: 14px;
+  font-family: var(--font-body);
+  font-size: 16px; /* 16px stops iOS zoom-on-focus */
   outline: none;
   transition: all var(--t2) var(--ease);
   width: 100%;
+  box-sizing: border-box;
 }
 .contact__input:focus { border-color: var(--accent); background: rgba(139,92,246,0.05); box-shadow: 0 0 0 3px rgba(139,92,246,0.1); }
 .contact__input::placeholder { color: var(--text-3); }
@@ -73,11 +75,6 @@
   border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
-}
-
-@media (max-width: 900px) {
-  .contact__grid { grid-template-columns: 1fr; }
-  .contact__row { grid-template-columns: 1fr; }
 }
 
 /* Success banner */
@@ -113,3 +110,19 @@
   margin-top: 4px;
 }
 .contact__note strong { color: var(--text-2); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .contact__grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .contact__row { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 600px) {
+  .contact__form-wrap { padding: 20px; }
+  .contact__link { flex-wrap: wrap; padding: 14px; gap: 12px; }
+  .contact__link-value { white-space: normal; overflow-wrap: anywhere; }
+  .contact__link-actions { width: 100%; }
+  .contact__link-actions .btn,
+  .contact__link-btn { flex: 1; justify-content: center; text-align: center; }
+  .contact__location { padding: 14px; }
+  .contact__link:hover { transform: none; }
+}
